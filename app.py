@@ -13,8 +13,8 @@ def index():
         text = request.form["text"]
         response = openai.Completion.create(model="text-davinci-002",
                                             prompt=generate_prompt(text),
-                                            temperature=0.7,
-                                            max_tokens=64,
+                                            temperature=0,
+                                            max_tokens=60,
                                             top_p=1.0,
                                             frequency_penalty=0.0,
                                             presence_penalty=0.0)
@@ -25,5 +25,5 @@ def index():
 
 
 def generate_prompt(text):
-    return """Summarize this for a second-grade student: {}""".format(
+    return """Convert this from gendered noun to gender neutral: {}""".format(
         text.capitalize())
